@@ -1,11 +1,9 @@
 package br.com.zupacademy.maxley.casadocodigo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -16,16 +14,20 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @NotEmpty
     private String nome;
 
-    @NotEmpty @Email
+    @NotNull @NotEmpty @Email
     private String email;
 
-    @NotEmpty @Size(max=400)
+    @NotNull @NotEmpty @Size(max=400)
     private String descricao;
 
     private LocalDateTime dataCriacao;
+
+    @Deprecated
+    public Autor(){}
 
     public Autor(String nome, String email, String descricao){
         this.nome = nome;
