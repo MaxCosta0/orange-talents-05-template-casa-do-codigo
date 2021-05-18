@@ -1,6 +1,6 @@
 package br.com.zupacademy.maxley.casadocodigo.config.validacao;
 
-import br.com.zupacademy.maxley.casadocodigo.controller.form.AutorForm;
+import br.com.zupacademy.maxley.casadocodigo.controller.dto.AutorDto;
 import br.com.zupacademy.maxley.casadocodigo.model.Autor;
 import br.com.zupacademy.maxley.casadocodigo.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class ProibeEmailDuplicadoAutorValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return AutorForm.class.isAssignableFrom(clazz);
+        return AutorDto.class.isAssignableFrom(clazz);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ProibeEmailDuplicadoAutorValidator implements Validator {
             return;
         }
 
-        AutorForm request = (AutorForm) target;
+        AutorDto request = (AutorDto) target;
         Optional<Autor> possivelAutor = autorRepository.findByEmail(request.getEmail());
 
         if(possivelAutor.isPresent()){

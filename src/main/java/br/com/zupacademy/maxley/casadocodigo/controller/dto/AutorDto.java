@@ -20,6 +20,8 @@ public class AutorDto {
     @NotNull @NotEmpty @Size(max=400)
     private String descricao;
 
+    public AutorDto(){}
+
     public AutorDto(Autor autor) {
         this.nome = autor.getNome();
         this.email = autor.getEmail();
@@ -38,7 +40,7 @@ public class AutorDto {
         return descricao;
     }
 
-    public AutorDto converterAutorParaAutorDto(Autor autor){
-        return new AutorDto(autor);
+    public Autor converter(AutorDto autorDto) {
+        return new Autor(autorDto.getNome(), autorDto.getEmail(), autorDto.getDescricao());
     }
 }
