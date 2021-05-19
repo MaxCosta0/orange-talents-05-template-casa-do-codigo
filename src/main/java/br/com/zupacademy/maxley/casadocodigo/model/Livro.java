@@ -1,6 +1,7 @@
 package br.com.zupacademy.maxley.casadocodigo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.ISBN;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -22,6 +23,7 @@ public class Livro {
     private String resumo;
 
     @NotNull
+    @Lob
     private String sumario;
 
     @NotNull
@@ -33,6 +35,7 @@ public class Livro {
     private Integer numeroPaginas;
 
     @NotBlank
+    @ISBN(type = ISBN.Type.ANY)
     private String isbn;
 
     @NotNull
@@ -62,5 +65,13 @@ public class Livro {
         this.dataPublicacao = dataPublicacao;
         this.categoria = categoria;
         this.autor = autor;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getNome() {
+        return this.titulo;
     }
 }

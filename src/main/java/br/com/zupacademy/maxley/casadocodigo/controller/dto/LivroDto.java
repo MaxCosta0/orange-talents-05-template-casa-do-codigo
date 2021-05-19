@@ -8,8 +8,10 @@ import br.com.zupacademy.maxley.casadocodigo.model.Livro;
 import br.com.zupacademy.maxley.casadocodigo.repository.AutorRepository;
 import br.com.zupacademy.maxley.casadocodigo.repository.CategoriaRepository;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.ISBN;
 import org.springframework.util.Assert;
 
+import javax.persistence.Lob;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ public class LivroDto {
     private String resumo;
 
     @NotNull
+    @Lob
     private String sumario;
 
     @NotNull
@@ -36,6 +39,7 @@ public class LivroDto {
     private Integer numeroPaginas;
 
     @NotBlank
+    @ISBN(type = ISBN.Type.ANY)
     @UniqueValue(domainClass = Livro.class, fieldName = "isbn")
     private String isbn;
 

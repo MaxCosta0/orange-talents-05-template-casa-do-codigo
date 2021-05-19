@@ -1,8 +1,7 @@
 package br.com.zupacademy.maxley.casadocodigo.controller;
 
 import br.com.zupacademy.maxley.casadocodigo.controller.dto.LivroDto;
-import br.com.zupacademy.maxley.casadocodigo.model.Autor;
-import br.com.zupacademy.maxley.casadocodigo.model.Categoria;
+import br.com.zupacademy.maxley.casadocodigo.controller.dto.LivroResposta;
 import br.com.zupacademy.maxley.casadocodigo.model.Livro;
 import br.com.zupacademy.maxley.casadocodigo.repository.AutorRepository;
 import br.com.zupacademy.maxley.casadocodigo.repository.CategoriaRepository;
@@ -12,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/livros")
@@ -29,5 +29,11 @@ public class LivroController {
         Livro livro = livroDto.converter(categoriaRepository, autorRepository);
         livroRepository.save(livro);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public List<LivroResposta> listar(){
+        List<Livro> livros = livroRepository.findAll();
+        return LivroResposta.converter(livros);
     }
 }
