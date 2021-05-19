@@ -74,4 +74,32 @@ public class Livro {
     public String getNome() {
         return this.titulo;
     }
+
+    public Long getIdAutor() {
+        return this.autor.getId();
+    }
+
+    public String getTitulo() {
+        return this.titulo;
+    }
+
+    public BigDecimal getPreco() {
+        return this.preco;
+    }
+
+    public String getResumo() {
+        return this.resumo;
+    }
+
+    public Integer getNumeroPaginas() {
+        return this.numeroPaginas;
+    }
+
+    public String getIsbn() {
+        return this.isbn;
+    }
+
+    public String getSumario() {
+        return this.sumario;
+    }
 }

@@ -47,4 +47,8 @@ public class Autor {
     public String getDescricao() {
         return descricao;
     }
+
+    public Long getId() {
+        return this.id;
+    }
 }
